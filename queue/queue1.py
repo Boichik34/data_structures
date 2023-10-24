@@ -11,12 +11,12 @@ class Queue:
         self.size = 0
 
     def enqueue(self, item, prev=None):
-        noda = Node(item)
+        node = Node(item)
         if self.size == 0:
-            self.head = noda
+            self.head = node
         else:
-            self.tail.prev = noda
-        self.tail = noda
+            self.tail.prev = node
+        self.tail = node
         self.size += 1
 
     def dequeue(self):
@@ -43,3 +43,8 @@ class Queue:
         else:
             return False
 
+
+queue = Queue()
+queue.enqueue(111)
+queue.enqueue(1)
+queue.enqueue(2)

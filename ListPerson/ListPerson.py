@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, data, next=None, prev=None):
+    def __init__(self, data: list, next=None, prev=None):
         self.data = data
         self.next = next
         self.prev = prev
@@ -11,7 +11,11 @@ class ListPerson:
         self.head = None
         self.tail = None
 
-    def add(self, item):
+    def add(self, item: list):
+        if not isinstance(item, list):
+            return 'incorrect values'
+        if len(item) != 2:
+            return 'incorrect values'
         node = Node(item)
         if self.size == 0:
             self.head = node
@@ -59,12 +63,19 @@ class ListPerson:
         self.size -= 1
         return data
 
-    def add_on_position(self, item, position):
+    def add_on_position(self, item: list, position):
+        if not isinstance(item, list):
+            return 'incorrect values'
+        if len(item) != 2:
+            return 'incorrect values'
         node = Node(item)
         if self.size == 0:
             self.head = node
             self.tail = node
-
+        if position == 1:
+            self.head.next = node
+            node.prev = self.head
+            self.head = node
         if position > self.size:
             self.tail.prev = node
             node.next = self.tail
@@ -80,7 +91,9 @@ class ListPerson:
                 target_link.next = node
         self.size += 1
 
-    def search_for_family(self, family):
+    def search_for_family(self, family: str):
+        if not isinstance(family, str):
+            return 'incorrect values'
         if self.size == 0:
             return 'list is empty'
         target_link = self.head
@@ -93,5 +106,27 @@ class ListPerson:
 
         return "Nothing was found for your request"
 
-lst = ListPerson()
 
+lst = ListPerson()
+lst.add(['ivanov1', '12.12.12'])
+lst.add(['ivanov2', '12.12.12'])
+lst.add(['ivanov3', '12.12.12'])
+lst.add(['ivanov4', '12.12.12'])
+lst.add(['ivanov5', '12.12.12'])
+lst.add(['ivanov6', '12.12.12'])
+lst.add(['ivanov7', '12.12.12'])
+lst.add(['ivanov8', '12.12.12'])
+lst.add(['ivanov9', '12.12.12'])
+lst.add(['ivanov10', '12.12.12'])
+lst.add(['ivanov12', '12.12.12'])
+lst.add(['ivanov13', '12.12.12'])
+lst.add(['ivanov14', '12.12.12'])
+lst.add(['ivanov15', '12.12.12'])
+lst.add(['ivanov16', '12.12.12'])
+lst.add(['ivanov17', '12.12.12'])
+lst.add(['ivanov18', '12.12.12'])
+lst.add_on_position(['ivanov333', '12.12.12'], 14)
+lst.add_on_position(['ivanov444', '12.12.12'], 14)
+lst.add_on_position(['ivanov555', '12.12.12'], 14)
+lst.add_on_position(['ivanov_first', '12.12.12'], 1)
+lst.add_on_position(['ivanov_last', '12.12.12'], 29)

@@ -33,3 +33,10 @@ class Stack:
             return True
         else:
             return False
+
+
+stack = Stack()
+
+stack.push(5)
+stack.push(6)
+
